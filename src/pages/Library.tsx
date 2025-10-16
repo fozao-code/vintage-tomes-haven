@@ -57,54 +57,58 @@ const sampleBooks = [
 const Library = () => {
   return (
     <div className="min-h-screen bg-background">
-      <header className="border-b-2 border-vintage-burgundy/30 bg-vintage-paper py-6">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <BookOpen className="h-8 w-8 text-vintage-burgundy" />
-              <h1 className="text-3xl font-serif font-bold text-vintage-burgundy text-shadow-vintage">
+      <header className="border-b-2 border-vintage-burgundy/30 bg-vintage-paper py-4 md:py-6">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between gap-2">
+            <div className="flex items-center gap-2 md:gap-3 min-w-0">
+              <BookOpen className="h-6 w-6 md:h-8 md:w-8 text-vintage-burgundy flex-shrink-0" />
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-serif font-bold text-vintage-burgundy text-shadow-vintage truncate">
                 The Scholars' Library
               </h1>
             </div>
-            <Button variant="outline" className="border-vintage-burgundy text-vintage-burgundy hover:bg-vintage-burgundy hover:text-vintage-paper">
+            <Button 
+              variant="outline" 
+              size="sm"
+              className="border-vintage-burgundy text-vintage-burgundy hover:bg-vintage-burgundy hover:text-vintage-paper flex-shrink-0 text-xs md:text-sm"
+            >
               Sign In
             </Button>
           </div>
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-12">
-        <div className="mb-12 text-center">
-          <h2 className="text-4xl font-serif font-bold text-vintage-burgundy mb-4 text-shadow-vintage">
+      <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <div className="mb-8 md:mb-12 text-center">
+          <h2 className="text-3xl sm:text-4xl font-serif font-bold text-vintage-burgundy mb-3 md:mb-4 text-shadow-vintage px-4">
             Browse Our Collection
           </h2>
-          <p className="text-lg text-muted-foreground font-body max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-muted-foreground font-body max-w-2xl mx-auto px-4">
             Discover a curated selection of enchanting storybooks and comprehensive academic texts, 
             freely available to all students.
           </p>
         </div>
 
-        <div className="mb-8 max-w-2xl mx-auto">
+        <div className="mb-6 md:mb-8 max-w-2xl mx-auto">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 md:h-5 md:w-5 text-muted-foreground" />
             <Input
               type="search"
               placeholder="Search books, authors, or subjects..."
-              className="pl-10 bg-vintage-paper border-vintage-sepia focus:border-vintage-gold"
+              className="pl-9 md:pl-10 bg-vintage-paper border-vintage-sepia focus:border-vintage-gold text-sm md:text-base"
             />
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {sampleBooks.map((book) => (
             <BookCard key={book.id} book={book} />
           ))}
         </div>
       </main>
 
-      <footer className="border-t-2 border-vintage-burgundy/30 bg-vintage-paper py-8 mt-16">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-muted-foreground font-body">
+      <footer className="border-t-2 border-vintage-burgundy/30 bg-vintage-paper py-6 md:py-8 mt-12 md:mt-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-sm md:text-base text-muted-foreground font-body px-4">
             © 2025 The Scholars' Library. A free resource for Cambridge and BTEC students.
           </p>
         </div>
