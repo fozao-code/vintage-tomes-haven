@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { BookCard } from "@/components/BookCard";
-import { Search, BookOpen } from "lucide-react";
+import { Search, BookOpen, LogOut } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
+import { Link } from "react-router-dom";
 
 const sampleBooks = [
   {
@@ -55,6 +57,8 @@ const sampleBooks = [
 ];
 
 const Library = () => {
+  const { user, signOut } = useAuth();
+
   return (
     <div className="min-h-screen bg-background">
       <a href="#library-content" className="skip-link">
@@ -70,14 +74,29 @@ const Library = () => {
                 The Scholars' Library
               </h1>
             </div>
-            <Button 
-              variant="outline" 
-              size="sm"
-              className="border-vintage-burgundy text-vintage-burgundy hover:bg-vintage-burgundy hover:text-vintage-paper flex-shrink-0 text-xs md:text-sm"
-              aria-label="Sign in to your account"
-            >
-              Sign In
-            </Button>
+            {user ? (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => signOut()}
+                className="border-vintage-burgundy text-vintage-burgundy hover:bg-vintage-burgundy hover:text-vintage-paper flex-shrink-0 text-xs md:text-sm"
+                aria-label="Sign out"
+              >
+                <LogOut className="h-4 w-4 mr-1" aria-hidden="true" />
+                Sign Out
+              </Button>
+            ) : (
+              <Link to="/auth">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="border-vintage-burgundy text-vintage-burgundy hover:bg-vintage-burgundy hover:text-vintage-paper flex-shrink-0 text-xs md:text-sm"
+                  aria-label="Sign in to your account"
+                >
+                  Sign In
+                </Button>
+              </Link>
+            )}
           </div>
         </div>
       </header>
