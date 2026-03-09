@@ -57,11 +57,15 @@ const sampleBooks = [
 const Library = () => {
   return (
     <div className="min-h-screen bg-background">
-      <header className="border-b-2 border-vintage-burgundy/30 bg-vintage-paper py-4 md:py-6">
+      <a href="#library-content" className="skip-link">
+        Skip to library content
+      </a>
+
+      <header role="banner" className="border-b-2 border-vintage-burgundy/30 bg-vintage-paper py-4 md:py-6">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between gap-2">
             <div className="flex items-center gap-2 md:gap-3 min-w-0">
-              <BookOpen className="h-6 w-6 md:h-8 md:w-8 text-vintage-burgundy flex-shrink-0" />
+              <BookOpen className="h-6 w-6 md:h-8 md:w-8 text-vintage-burgundy flex-shrink-0" aria-hidden="true" />
               <h1 className="text-xl sm:text-2xl md:text-3xl font-serif font-bold text-vintage-burgundy text-shadow-vintage truncate">
                 The Scholars' Library
               </h1>
@@ -70,6 +74,7 @@ const Library = () => {
               variant="outline" 
               size="sm"
               className="border-vintage-burgundy text-vintage-burgundy hover:bg-vintage-burgundy hover:text-vintage-paper flex-shrink-0 text-xs md:text-sm"
+              aria-label="Sign in to your account"
             >
               Sign In
             </Button>
@@ -77,7 +82,7 @@ const Library = () => {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+      <main id="library-content" className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         <div className="mb-8 md:mb-12 text-center">
           <h2 className="text-3xl sm:text-4xl font-serif font-bold text-vintage-burgundy mb-3 md:mb-4 text-shadow-vintage px-4">
             Browse Our Collection
@@ -88,25 +93,28 @@ const Library = () => {
           </p>
         </div>
 
-        <div className="mb-6 md:mb-8 max-w-2xl mx-auto">
+        <div className="mb-6 md:mb-8 max-w-2xl mx-auto" role="search" aria-label="Search books">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 md:h-5 md:w-5 text-muted-foreground" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 md:h-5 md:w-5 text-muted-foreground" aria-hidden="true" />
             <Input
               type="search"
               placeholder="Search books, authors, or subjects..."
+              aria-label="Search books, authors, or subjects"
               className="pl-9 md:pl-10 bg-vintage-paper border-vintage-sepia focus:border-vintage-gold text-sm md:text-base"
             />
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {sampleBooks.map((book) => (
-            <BookCard key={book.id} book={book} />
-          ))}
-        </div>
+        <section aria-label="Book collection">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {sampleBooks.map((book) => (
+              <BookCard key={book.id} book={book} />
+            ))}
+          </div>
+        </section>
       </main>
 
-      <footer className="border-t-2 border-vintage-burgundy/30 bg-vintage-paper py-6 md:py-8 mt-12 md:mt-16">
+      <footer role="contentinfo" className="border-t-2 border-vintage-burgundy/30 bg-vintage-paper py-6 md:py-8 mt-12 md:mt-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-sm md:text-base text-muted-foreground font-body px-4">
             © 2025 The Scholars' Library. A free resource for Cambridge and BTEC students.
